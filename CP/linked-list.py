@@ -33,6 +33,25 @@ class LinkedList:
 
         last.next = new
 
+    def deleteNode(self, key):
+        temp = self.head
+        if temp is not None:
+            if temp.data == key:
+                self.head = temp.next
+                temp = None
+                return
+
+        while temp is not None:
+            if temp.data == key:
+                break
+            prev = temp
+            temp = temp.next
+
+        if temp == None:
+            return
+
+        prev.next = temp.next
+
     def printList(self):
         temp = self.head
         while temp:
@@ -45,4 +64,7 @@ if __name__ == '__main__':
     array = [1, 5, 9, 6, 8, 9, 33, 0]
     for i in range(0, len(array)):
         linked_list.append(array[i])
+    linked_list.printList()
+    linked_list.deleteNode(33)
+    print("\n")
     linked_list.printList()
